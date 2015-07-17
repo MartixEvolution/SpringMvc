@@ -18,7 +18,7 @@ import com.tju.model.User;
 @Controller
 @RequestMapping("/welcome")
 public class HelloController {
-	
+
 	@RequestMapping(value="/hello",method = RequestMethod.GET)
 	public String printWelcome(HttpServletRequest request,ModelMap model) {
 		 ApplicationContext ctx=new ClassPathXmlApplicationContext("applicationContext.xml");
@@ -36,6 +36,13 @@ public class HelloController {
 
 	@RequestMapping(value="/helloworld",method = RequestMethod.GET)
 	public String printWelcome2(ModelMap model) {
+		model.addAttribute("message", "Spring 3 MVC Hello World");
+		return "hello";
+	}
+	
+	@RequestMapping(value="/helloworld2",method = RequestMethod.GET)
+	public String printWelcome3(User myUser,ModelMap model) {
+		System.out.println(myUser.toString());
 		model.addAttribute("message", "Spring 3 MVC Hello World");
 		return "hello";
 	}
